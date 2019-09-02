@@ -1,11 +1,16 @@
+using System.ComponentModel.DataAnnotations;
 using PizzaBox.Domain.Abstracts;
 
 namespace PizzaBox.Domain.Models
 {
-  public class Crust : AComponent
+  public class Crust 
   {
-   protected int crustId { get; set; }
-   public Crust(string name) : base(name){}
+    [Key]
+   public int crustId { get; set; }
+   public string Name { get; set; }
+   public decimal Price { get; set; }
+
+  //  internal Crust(string name) : base(name){}
 
     
   }

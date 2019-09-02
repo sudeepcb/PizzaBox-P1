@@ -1,0 +1,21 @@
+@model PizzaBox.Client.ViewModel.UserAddressVM
+
+<form action="/user/register" method="post">
+  @Html.ValidationMessageFor(m => m.user.userName)
+  <label for="userName">Username:</label>
+  <input type="text" id="userName" asp-for="@Model.user.userName">
+  @Html.ValidationMessageFor(m => m.user.Address)
+  <br>
+  <label for="recentAddress">Pick one from the following locations:</label>
+  <br>
+  
+      @foreach (var item in Model.allAddress)
+    {
+    <label><input type="radio" asp-for="@Model.user.Address.addressId" value="@item.addressId" >@item.Street,@item.City,@item.State</label>      
+           <input type="hidden" asp-for="@Model.user.Address.Street" value="@item.Street">
+           <input type="hidden" asp-for="@Model.user.Address.City" value="@item.City">
+           <input type="hidden" asp-for="@Model.user.Address.State" value="@item.State">
+      }
+  <br>
+  <button type="submit">Create User</button>
+</form>

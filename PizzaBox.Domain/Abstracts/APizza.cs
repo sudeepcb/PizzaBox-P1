@@ -5,14 +5,18 @@ namespace PizzaBox.Domain.Abstracts
 {
     public abstract class APizza
     {
-        protected int pizzaId { get; set; }
+        public int Id { get; set; }
+        public Crust crust { get; set; }
+        public Size size { get; set; }
 
         public List<Toppings> Toppings { get; set; } 
         protected List<AComponent> _components;
 
         public List<AComponent> Components { get{ return _components; }  }
-        public abstract List<AComponent> GetComponents(Size s, List<Toppings> t);
+        public abstract List<AComponent> GetComponents(Crust c, Size s, List<Toppings> t);
 
         public abstract void getEverything();
+
+        public abstract override string ToString();
     }
 }
